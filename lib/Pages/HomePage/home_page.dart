@@ -1,7 +1,4 @@
-import 'dart:developer';
-import 'package:bottom_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:media_player/controller/music_controller.dart';
 import 'package:media_player/Pages/MusicPage/music_page.dart';
 import 'package:media_player/Pages/VideoPage/video_page.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -21,7 +18,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // drawer: const Drawer(),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(0),
         child: AppBar(
@@ -36,9 +32,9 @@ class _HomePageState extends State<HomePage> {
       ),
       body: PageView(
         controller: _pageController,
-        children: [
-          const MusicPage(),
-          const VideoPage(),
+        children: const [
+          MusicPage(),
+          VideoPage(),
         ],
         onPageChanged: (index) {
           setState(() => _currentPage = index);

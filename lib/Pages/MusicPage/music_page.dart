@@ -7,10 +7,11 @@ class MusicPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MusicController controller = MusicController();
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         title: const Text(
           "Music Page",
         ),
@@ -27,26 +28,26 @@ class MusicPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             StreamBuilder(
-              stream: MusicController().audioPlayer.currentPosition,
+              stream: controller.audioPlayer.currentPosition,
               builder: (context, snapShot) {
-                double max = MusicController().duration.inSeconds.toDouble();
+                double max = controller.duration.inSeconds.toDouble();
                 return Row(
                   children: [
                     const Text("00:00"),
                     Expanded(
                       child: Slider(
                         min: 0,
-                        max: MusicController().duration.inSeconds.toDouble(),
+                        max: controller.duration.inSeconds.toDouble(),
                         value: snapShot.data?.inSeconds.toDouble() ?? 0,
                         onChanged: (val) {
                           log("$val/$max");
-                          MusicController().seek(
+                          controller.seek(
                             seconds: val.toInt(),
                           );
                         },
                       ),
                     ),
-                    Text("${(max.toInt() / 60).toInt()}:${max.toInt() % 60}"),
+                    Text("${max.toInt() ~/ 60}:${max.toInt() % 60}"),
                   ],
                 );
               },
@@ -56,13 +57,13 @@ class MusicPage extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: () {
-                    MusicController().play();
+                    controller.play();
                   },
                   icon: const Icon(Icons.play_arrow),
                 ),
                 IconButton(
                   onPressed: () {
-                    MusicController().pause();
+                    controller.pause();
                   },
                   icon: const Icon(Icons.pause),
                 ),
