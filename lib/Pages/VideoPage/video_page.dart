@@ -4,7 +4,11 @@ import 'package:get/get.dart';
 import 'package:media_player/controller/video_controller.dart';
 
 class VideoPage extends StatelessWidget {
-  const VideoPage({super.key});
+  VideoPage({super.key});
+
+  VideoController videoController = Get.put(
+    VideoController(),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -29,27 +33,27 @@ class VideoPage extends StatelessWidget {
                               Chewie(controller: controller.chewieController),
                         )
                       : const CircularProgressIndicator(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          controller.myController.play();
-                        },
-                        icon: const Icon(
-                          Icons.play_arrow,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          controller.myController.pause();
-                        },
-                        icon: const Icon(
-                          Icons.pause,
-                        ),
-                      ),
-                    ],
-                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     IconButton(
+                  //       onPressed: () {
+                  //         controller.myController.play();
+                  //       },
+                  //       icon: const Icon(
+                  //         Icons.play_arrow,
+                  //       ),
+                  //     ),
+                  //     IconButton(
+                  //       onPressed: () {
+                  //         controller.myController.pause();
+                  //       },
+                  //       icon: const Icon(
+                  //         Icons.pause,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                 ],
               ),
             );

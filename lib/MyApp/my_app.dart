@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/video_page',
-          page: () => const VideoPage(),
+          page: () => VideoPage(),
         ),
       ],
     );

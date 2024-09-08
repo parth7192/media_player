@@ -32,8 +32,8 @@ class _HomePageState extends State<HomePage> {
       ),
       body: PageView(
         controller: _pageController,
-        children: const [
-          MusicPage(),
+        children: [
+          const MusicPage(),
           VideoPage(),
         ],
         onPageChanged: (index) {
